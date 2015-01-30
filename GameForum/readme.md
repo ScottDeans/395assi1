@@ -24,6 +24,8 @@ Documentation for the entire framework can be found on the [Laravel website](htt
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
+Credit to https://www.packtpub.com/books/content/laravel-4-creating-simple-crud-application-hours for the help in creation of the users for my website.
+
 -Use Mysql for the database install
 login with
 mysql -r root -p
