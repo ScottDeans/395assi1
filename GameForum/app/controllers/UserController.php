@@ -10,7 +10,7 @@ class UserController extends \BaseController {
 	public function index()
 	{
 	   $users = User::paginate(5);
-  return View::make('users.index', compact('users'));
+  return View::make('users.index', compact('users'));//show page
 	}
 
 
@@ -33,18 +33,18 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		//checks validation rules
         $input = Input::all();
         $validation = Validator::make($input, User::$rules);
 
-        if ($validation->passes())
+        if ($validation->passes())//if passed create new user form and send back to index
         {
             User::create($input);
 
             return Redirect::route('users.index');
         }
 
-        return Redirect::route('users.create')
+        return Redirect::route('users.create')//if not send back to create with errors
             ->withInput()
             ->withErrors($validation)
             ->with('message', 'There were validation errors.');
@@ -60,7 +60,7 @@ class UserController extends \BaseController {
 	public function show($id)
 	{
 		//
-return Redirect::route('users.index');
+return Redirect::route('users.index');//displays user
 	}
 
 
@@ -73,12 +73,12 @@ return Redirect::route('users.index');
 	public function edit($id)
 	{
 		//
-      $user = User::find($id);
+      $user = User::find($id);//finds the id to edit
         if (is_null($user))
         {
-            return Redirect::route('users.index');
+            return Redirect::route('users.index');//if not there return to index
         }
-        return View::make('users.edit', compact('user'));
+        return View::make('users.edit', compact('user'));//sends to edit views
 	}
 
 
@@ -92,14 +92,14 @@ return Redirect::route('users.index');
 	{
 		//
        $input = Input::all();
-        $validation = Validator::make($input, User::$rules);
+        $validation = Validator::make($input, User::$rules); //makes sure it passes validation rules
         if ($validation->passes())
         {
             $user = User::find($id);
             $user->update($input);
-            return Redirect::route('users.show', $id);
+            return Redirect::route('users.show', $id);//calls shows
         }
-return Redirect::route('users.edit', $id)
+return Redirect::route('users.edit', $id)  //send back to edit if there were errors with the rules
             ->withInput()
             ->withErrors($validation)
             ->with('message', 'There were validation errors.');
@@ -116,7 +116,7 @@ return Redirect::route('users.edit', $id)
 	{
 		//
    User::find($id)->delete();
-        return Redirect::route('users.index');
+        return Redirect::route('users.index'); //deletes entry sends back to user
 	}
 
 

@@ -20,7 +20,7 @@ public function showWelcome()
 public function showLogin()
 {
     // show the form
-    return View::make('login');
+    return View::make('login');//when login send forms
 }
 
 public function doLogin()
@@ -28,7 +28,7 @@ public function doLogin()
 		// validate the info, create rules for the inputs
 		$rules = array(
 			'email'    => 'required|email', // make sure the email is an actual email
-			'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
+			'password' => 'required|alphaNum|min:6' // password can only be alphanumeric and has to be greater than 6 characters
 		);
 		// run the validation rules on the inputs from the form
 		$validator = Validator::make(Input::all(), $rules);
@@ -48,15 +48,12 @@ public function doLogin()
 			// attempt to do the login
 			if (Auth::basic($user)) {
 				// validation successful!
-				// redirect them to the secure section or whatever
 				 return Redirect::route('users.index');
-				// for now we'll just echo success (even though echoing in a controller is bad)
-				//echo 'SUCCESS!';
 			} else {
 				// validation not successful, send back to form
-				//return Redirect::to('login');
-				echo 'loss!';
-				print_r(array_values($user));
+				return Redirect::to('login');
+				//echo 'loss!';
+				//print_r(array_values($user));
 			}
 		}
 	}

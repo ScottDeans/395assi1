@@ -6,7 +6,7 @@
 @section('content')
 
 <link rel="stylesheet" href="css/homecss.css" type="text/css">
-{{ Form::open(array('route' => 'users.store')) }}
+{{ Form::open(array('route' => 'users.store')) }}//forms for entering new data sends to store
     //<ul>
 
         <li>
