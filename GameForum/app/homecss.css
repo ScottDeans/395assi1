@@ -1,0 +1,42 @@
+body {
+    font-family:arial,Helvetica,sans-serif;
+    background-color: #d6e4dc;
+    color: blue;
+    font-size:120%;
+}
+.title {
+    padding-left:10px ;
+    padding-top:10px;
+    font-size:200%;
+    color: orange; 
+}
+#nav{
+    background: #000000;    
+    height: 34px;
+}
+#nav ul {
+    list-style:none;
+    
+}
+#nav ul li {
+    color: #ffffff;
+    float: left;
+    padding: 0 15px;
+    margin: 6px 0;
+    border-left: 1px solid #fff;
+}
+#nav ul li a:link {
+    color: orange;
+    text-decoration:none;
+}
+#nav ul li a:visited {
+    color:steelblue;
+}
+#nav ul li a:hover {
+    color:green;
+}
+
+#nav ul li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
